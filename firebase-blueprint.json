@@ -1,0 +1,89 @@
+{
+  "entities": {
+    "Site": {
+      "title": "Construction Site",
+      "description": "Represents a physical construction project.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Name of the project/house owner." },
+        "location": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "status": { "type": "string", "enum": ["active", "completed"] },
+        "laborerIds": { "type": "array", "description": "List of laborers assigned to this site." }
+      },
+      "required": ["name", "status"]
+    },
+    "Laborer": {
+      "title": "Laborer",
+      "description": "Represents a team member or worker.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "dailyWage": { "type": "number" },
+        "phone": { "type": "string" },
+        "active": { "type": "boolean" }
+      },
+      "required": ["name", "dailyWage"]
+    },
+    "AttendanceLog": {
+      "title": "Attendance & Payment Log",
+      "description": "Tracks daily work or payments for a laborer at a specific site.",
+      "type": "object",
+      "properties": {
+        "laborerId": { "type": "string" },
+        "siteId": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "type": { "type": "string", "enum": ["attendance", "advance", "payment"] },
+        "status": { "type": "string", "enum": ["present", "half-day", "absent"], "description": "Only for attendance type." },
+        "amount": { "type": "number", "description": "Amount for payment or advance types." },
+        "note": { "type": "string" }
+      },
+      "required": ["laborerId", "date", "type"]
+    },
+    "SitePhoto": {
+      "title": "Site Photo",
+      "description": "Work progress photos for a site.",
+      "type": "object",
+      "properties": {
+        "siteId": { "type": "string" },
+        "url": { "type": "string" },
+        "caption": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["siteId", "url"]
+    },
+    "MaterialRates": {
+      "title": "Material Rates",
+      "description": "Standard rates for materials in the region.",
+      "type": "object",
+      "properties": {
+        "brickPrice": { "type": "number" },
+        "cementPrice": { "type": "number" },
+        "sandPrice": { "type": "number" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      }
+    }
+  },
+  "firestore": {
+    "/sites/{siteId}": {
+      "schema": "Site",
+      "description": "Projects collection"
+    },
+    "/laborers/{laborerId}": {
+      "schema": "Laborer",
+      "description": "Team workers collection"
+    },
+    "/logs/{logId}": {
+      "schema": "AttendanceLog",
+      "description": "Worker logs collection"
+    },
+    "/photos/{photoId}": {
+      "schema": "SitePhoto",
+      "description": "Progress photos collection"
+    },
+    "/settings/rates": {
+      "schema": "MaterialRates",
+      "description": "Global material rates"
+    }
+  }
+}

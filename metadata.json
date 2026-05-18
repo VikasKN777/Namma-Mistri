@@ -1,0 +1,10 @@
+{
+  "name": "Namma-Mistri (ನಮ್ಮ ಮಿಸ್ತ್ರಿ)",
+  "description": "A rugged construction assistant for masons in rural India. Includes material calculators, labor diaries, and site progress tracking with Kannada support.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
