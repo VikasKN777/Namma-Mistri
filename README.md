@@ -3,6 +3,7 @@ Namma Mistri
 
 Trusted. Local. Reliable.
 A modern construction and home-services platform connecting skilled workers with customers for plumbing, electrical, labor management, and material services.
+ 
  Features
  Search local construction services
  Plumbing & electrical booking
@@ -37,7 +38,3 @@ npm run dev
 Contributing
 
 Contributions, ideas, and feature suggestions are welcome.
-
- License
-
-This project is licensed under the MIT License.
